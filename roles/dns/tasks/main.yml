@@ -1,0 +1,32 @@
+---
+# tasks file for dns
+- name: Install dnsmasq
+  yum:
+    name: dnsmasq
+    state: latest
+
+- name: Deploy config file
+  copy:
+    backup: yes
+    src: roles/dns/files/dnsmasq.conf
+    dest: /etc/dnsmasq.conf
+  notify: Restart dnsmasq
+
+- name: Deploy hosts file
+  copy:
+    src: roles/dns/files/dnsmasq.hosts
+    dest: /etc/dnsmasq.hosts
+  notify: Restart dnsmasq
+
+- name: Disable firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no
+
+- name: Add dnsmasq as enabled system service
+  systemd:
+    state: started
+    enabled: yes
+    name: dnsmasq
+

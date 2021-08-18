@@ -1,0 +1,4 @@
+---
+- hosts: controlNode
+  roles:
+    - {role: 'dns'}
