@@ -1,0 +1,18 @@
+---
+# tasks file for common
+- name: Disable firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: no
+
+- name: Install ntp server
+  yum:
+    name: ntp
+    state: present
+
+- name: Run ntp service
+  systemd:
+    name: ntpd
+    state: started
+    enabled: yes
