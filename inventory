@@ -10,6 +10,6 @@ ansible_ssh_private_key_file=~/.ssh/id_rsa
 centos ansible_host=192.168.123.5
 
 [clusterNode]
-node01 ansible_host=192.168.123.13
-node02 ansible_host=192.168.123.15
-node03 ansible_host=192.168.123.17
+node01 ansible_host=192.168.123.51
+node02 ansible_host=192.168.123.53
+node03 ansible_host=192.168.123.55
