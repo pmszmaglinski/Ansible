@@ -1,2 +1,10 @@
 ---
 # handlers file for roles/rancher
+- name: Systemd Daemon Reload
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Restart Rancher Service
+  ansible.builtin.service:
+    name: docker-compose@cadvisor
+    state: restarted

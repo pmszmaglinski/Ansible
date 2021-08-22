@@ -16,3 +16,8 @@
     name: ntpd
     state: started
     enabled: yes
+
+- name: Install epel-release repo
+  yum:
+    name: epel-release
+    state: latest

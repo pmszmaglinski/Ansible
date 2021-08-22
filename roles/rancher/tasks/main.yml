@@ -1,2 +1,42 @@
 ---
 # tasks file for roles/rancher
+- name: Create rancher data volume folder
+  ansible.builtin.file:
+    path: /opt/rancher
+    owner: root
+    group: root
+    mode: '0755'
+    state: directory
+
+- name: Copy systemd service file
+  ansible.builtin.copy:
+    src: files/systemd/docker-compose@.service
+    dest: /etc/systemd/system/docker-compose@.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Systemd Daemon Reload
+
+- name: Create docker compose service directory
+  ansible.builtin.file:
+    path: /etc/docker/compose/rancher
+    owner: root
+    group: root
+    mode: '0755'
+    state: directory
+
+- name: Copy docker compose template
+  ansible.builtin.copy:
+    src: files/docker-compose.yml
+    dest: /etc/docker/compose/rancher/docker-compose.yml
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart Rancher Service
+
+- name: Enable rancher service
+  ansible.builtin.systemd:
+    name: docker-compose@rancher
+    state: started
+    enabled: yes
+

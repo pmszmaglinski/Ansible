@@ -1,5 +1,5 @@
 192.168.123.3 vmware
-192.168.123.5 dns
+192.168.123.5 dns centos rancher
 
 #K8s cluster nodes
 192.168.123.51 node01
