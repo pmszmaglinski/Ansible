@@ -1,2 +1,10 @@
 ---
 # handlers file for reverse-proxy
+- name: Systemd Daemon Reload
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Restart Nginx Service
+  ansible.builtin.service:
+    name: docker-compose@nginx
+    state: restarted

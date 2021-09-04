@@ -1,10 +1,10 @@
 ---
-# handlers file for roles/rancher
+# handlers file for roles/jenkins-master
 - name: Systemd Daemon Reload
   ansible.builtin.systemd:
     daemon_reload: yes
 
-- name: Restart Rancher Service
+- name: Restart Jenkins Service
   ansible.builtin.service:
-    name: docker-compose@rancher
+    name: docker-compose@jenkins
     state: restarted

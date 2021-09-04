@@ -1,0 +1,41 @@
+---
+# tasks file for roles/jenkins-master
+- name: Create Jenkins home dir
+  ansible.builtin.file:
+    path: /opt/jenkins
+    owner: root
+    group: root
+    mode: '0755'
+    state: directory
+
+- name: Copy systemd service file
+  ansible.builtin.copy:
+    src: files/systemd/docker-compose@.service
+    dest: /etc/systemd/system/docker-compose@.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Systemd Daemon Reload
+
+- name: Create docker compose Jenkins service directory
+  ansible.builtin.file:
+    path: /etc/docker/compose/jenkins
+    owner: root
+    group: root
+    mode: '0755'
+    state: directory
+
+- name: Copy docker compose template
+  ansible.builtin.copy:
+    src: files/docker-compose.yml
+    dest: /etc/docker/compose/jenkins/docker-compose.yml
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart Jenkins Service
+
+- name: Enable jenkins service
+  ansible.builtin.systemd:
+    name: docker-compose@jenkins
+    state: started
+    enabled: yes
