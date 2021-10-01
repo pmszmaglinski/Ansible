@@ -8,6 +8,7 @@ services:
       - 8443:443
     volumes:
       - /opt/rancher:/var/lib/rancher
+      - /etc/pki/tls/certs/home.lan.crt:/certs/home.lan.crt
+      - /etc/pki/tls/private/home.lan.key:/certs/home.lan.key
     restart: unless-stopped
     privileged: true
-
