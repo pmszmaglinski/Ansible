@@ -4,8 +4,11 @@ services:
     image: nginx:latest
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - /etc/pki/tls/certs/home.lan.crt:/certs/home.lan.crt
+      - /etc/pki/tls/private/home.lan.key:/certs/home.lan.key
     ports:
       - "80:80"
-    environment:
+      - "443:443"
+#    environment:
 #      - NGINX_HOST=foobar.com
-      - NGINX_PORT=80
+#      - NGINX_PORT=80
