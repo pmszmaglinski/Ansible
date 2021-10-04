@@ -5,10 +5,10 @@
 
 - hosts: controlNode
   roles:
-    #- {role: 'dns', tags: 'controlNode'}
-    #- {role: 'docker', tags: 'controlNode'}
-    #- {role: 'rancher', tags: 'controlNode'}
-    #- {role: 'jenkins-master', tags: 'controlNode'}
+    - {role: 'dns', tags: 'controlNode'}
+    - {role: 'docker', tags: 'controlNode'}
+    - {role: 'rancher', tags: 'controlNode'}
+    - {role: 'jenkins-master', tags: 'controlNode'}
     - {role: 'reverse-proxy', tags: 'controlNode'}
 
 - hosts: clusterNode
