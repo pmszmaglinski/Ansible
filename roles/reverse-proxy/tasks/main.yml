@@ -46,7 +46,7 @@
 
 - name: Copy certificate
   ansible.builtin.copy:
-U    src: ../../files/certs/home.lan.crt
+    src: ../../files/certs/home.lan.crt
     dest: /etc/pki/tls/certs/home.lan.crt
     owner: root
     group: root
