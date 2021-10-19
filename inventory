@@ -14,3 +14,6 @@ centos ansible_host=192.168.123.5
 node01 ansible_host=192.168.123.51
 node02 ansible_host=192.168.123.53
 node03 ansible_host=192.168.123.55
+
+[vmwareNode]
+vmware ansible_host=192.168.123.3

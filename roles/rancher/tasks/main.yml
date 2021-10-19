@@ -39,4 +39,3 @@
     name: docker-compose@rancher
     state: started
     enabled: yes
-

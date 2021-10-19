@@ -1,7 +1,7 @@
 ---
-- hosts: all
+- hosts: all:!vmwareNode
   roles:
-    - {role: 'common'}
+    - {role: 'common', tags: 'common'}
 
 - hosts: controlNode
   roles:
@@ -14,3 +14,8 @@
 - hosts: clusterNode
   roles:
     - {role: 'docker', tags: 'clusterNode'}
+
+- hosts: vmwareNode
+  roles:
+    - {role: 'vmware-certificates', tags: 'vmwareNode'}
+...
