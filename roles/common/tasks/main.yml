@@ -21,3 +21,11 @@
   yum:
     name: epel-release
     state: latest
+
+- name: Adding UTF-8 locale
+  ansible.builtin.copy:
+    src: files/environment
+    dest: /etc/environment
+    owner: root
+    group: root
+    mode: '0644'
