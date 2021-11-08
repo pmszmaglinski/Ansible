@@ -1,2 +1,4 @@
 ---
 # handlers file for common
+- name: Update CA trust
+  ansible.builtin.shell: update-ca-trust

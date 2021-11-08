@@ -29,3 +29,17 @@
     owner: root
     group: root
     mode: '0644'
+
+- name: Copy home.lan CA
+  ansible.builtin.copy:
+    src: ../../files/certs/HomeLanCA.crt
+    dest: /etc/pki/ca-trust/source/anchors/HomeLanCA.crt
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Update CA trust
+
+- name: Install ca-certificate package
+  ansible.builtin.yum:
+    name: ca-certificates
+    state: present

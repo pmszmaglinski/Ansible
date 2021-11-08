@@ -1,0 +1,11 @@
+FROM __JENKINS_AGENT_IMAGE_NAME__
+
+USER root
+
+ADD HomeLanCA.crt /tmp/HomeLanCA.crt
+
+RUN keytool -noprompt -storepass changeit -cacerts \
+  -import -file /tmp/HomeLanCA.crt -alias jenkinsMaster && \
+  rm -f /tmp/HomeLanCA.crt
+
+USER jenkins
