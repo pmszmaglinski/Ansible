@@ -14,7 +14,7 @@
 - hosts: clusterNode
   roles:
     - {role: 'docker', tags: 'clusterNode'}
-    - {role: 'jenkins-slave', tags: 'clusterNodeTest'}
+    - {role: 'jenkins-slave', tags: 'clusterNode'}
 
 - hosts: vmwareNode
   roles:
