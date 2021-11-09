@@ -1,0 +1,41 @@
+---
+# tasks file for roles/cluster-config
+- name: Create k8s config dir
+  ansible.builtin.file:
+    path: /root/.kube
+    state: directory
+    mode: '0700'
+
+- name: Copy kubeconfig file
+  ansible.builtin.copy:
+    src: files/kubeconfig.yml
+    dest: /root/.kube/config
+    owner: root
+    group: root
+    mode: '0600'
+
+- name: Copy cluster config files
+  ansible.builtin.copy:
+    src: files/config/
+    dest: /tmp/k8s-config/
+
+- name: Update yum repo
+  ansible.builtin.copy:
+    src: files/kubernetes.repo
+    dest: /etc/yum.repos.d/kubernetes.repo
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Install kubectl package
+  ansible.builtin.yum:
+    name: kubectl
+    state: latest
+
+- name: Apply home.lan dns resolution config
+  # TODO: Update self-signed cluster CA with HomeLanCA
+  #       and remove insecure statement
+  ansible.builtin.shell: |
+    kubectl --insecure-skip-tls-verify apply -f coredns.yml
+  args:
+    chdir: /tmp/k8s-config/

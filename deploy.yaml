@@ -10,6 +10,7 @@
     - {role: 'rancher', tags: 'controlNode'}
     - {role: 'jenkins-master', tags: 'controlNode'}
     - {role: 'reverse-proxy', tags: 'controlNode'}
+    - {role: 'cluster-config', tags: 'controlNodeTest'}
 
 - hosts: clusterNode
   roles:
