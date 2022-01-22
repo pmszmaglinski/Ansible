@@ -11,6 +11,7 @@
     - {role: 'jenkins-master', tags: 'controlNode'}
     - {role: 'reverse-proxy', tags: 'controlNode'}
     - {role: 'cluster-config', tags: 'controlNode'}
+    - {role: 'proxy-server', tags: 'controlNode'}
 
 - hosts: clusterNode
   roles:
