@@ -1,5 +1,6 @@
 192.168.123.3 vmware
 192.168.123.5 dns centos rancher jenkins proxy
+192.168.123.7 vcs
 
 #K8s cluster nodes
 192.168.123.51 node01
